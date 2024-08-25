@@ -5,7 +5,15 @@
 
 <!-- Hero Section -->
 <section id="hero" class="hero section dark-background">
-    <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in">
+    <!-- <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in"> -->
+
+    <div class="item active" style="position: absolute;  overflow: hidden;">
+        <video controls autoplay loop muted>
+            <source src="<?= base_url('assets/video/profile.mp4') ?>" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="pateren"></div>
+    </div>
     <div class="container">
         <div class="row justify-content-center text-center" data-aos="fade-up" data-aos-delay="100">
             <!-- <div class="col-xl-12">
