@@ -26,6 +26,7 @@
 
     <!-- Template Main CSS File -->
     <link href="<?= base_url('assets/css/main.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('assets/css/style.css') ?>" rel="stylesheet">
 
 
 </head>
