@@ -1,0 +1,62 @@
+# Direktori sistem operasi
+.DS_Store
+Thumbs.db
+
+# File Log dan Temporary
+writable/logs/*
+!writable/logs/index.html
+
+# Cache
+writable/cache/*
+!writable/cache/index.html
+
+# Uploads
+writable/uploads/*
+!writable/uploads/index.html
+
+# Direktori writable lainnya
+writable/session/*
+!writable/session/index.html
+
+# File konfigurasi lingkungan
+.env
+*.env
+
+# Direktori vendor yang dihasilkan oleh Composer
+/vendor/
+
+# Direktori node_modules yang dihasilkan oleh NPM/Yarn
+node_modules/
+
+# File IDE
+*.sublime-project
+*.sublime-workspace
+.vscode/
+.idea/
+
+# File Composer lock (composer.lock) yang dihasilkan oleh Composer
+composer.lock
+
+# File Yarn lock (yarn.lock) yang dihasilkan oleh Yarn
+yarn.lock
+
+# Direktori build dan dist
+dist/
+build/
+
+# File debug dan protokol
+*.log
+*.sql
+*.sqlite
+
+# Direktori biner, kunci, dan sertifikat
+bin/
+certs/
+keys/
+
+# Direktori test coverage
+coverage/
+
+# Direktori backup
+backup/
+backups/
