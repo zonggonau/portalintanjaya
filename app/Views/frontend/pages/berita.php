@@ -49,7 +49,7 @@
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="blog-card position-relative">
                     <!-- Background Image -->
-                    <div class="blog-card-image" style="background-image: url('assets/img/apel.jpeg');"></div>
+                    <div class="blog-card-image" style="background-image: url('<?= base_url('assets/img/apel.jpeg') ?>');"></div>
                     <!-- Blog Content -->
                     <div class="blog-card-content">
                         <a href="blog-details.html" class="stretched-link">
@@ -66,7 +66,7 @@
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="blog-card position-relative">
                     <!-- Background Image -->
-                    <div class="blog-card-image" style="background-image: url('assets/img/apel.jpeg');"></div>
+                    <div class="blog-card-image" style="background-image: url('<?= base_url('assets/img/apel.jpeg') ?>');"></div>
                     <!-- Blog Content -->
                     <div class="blog-card-content">
                         <a href="blog-details.html" class="stretched-link">
@@ -84,7 +84,7 @@
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="blog-card position-relative">
                     <!-- Background Image -->
-                    <div class="blog-card-image" style="background-image: url('assets/img/apel.jpeg');"></div>
+                    <div class="blog-card-image" style="background-image: url('<?= base_url('assets/img/apel.jpeg') ?>');"></div>
                     <!-- Blog Content -->
                     <div class="blog-card-content">
                         <a href="blog-details.html" class="stretched-link">
