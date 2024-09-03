@@ -41,14 +41,19 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form class="user" action="<?= base_url('auth/login') ?>" method="POST">
+                                    <?php
+                                    if (session()->getFlashdata('error')) {
+                                        echo '<div class="alert alert-danger">' . session()->getFlashdata('error') . '</div>';
+                                    }
+                                    ?>
+                                    <form class="user" action="<?= base_url('/proses/login') ?>" method="POST">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
+                                            <input type="email" name="username" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Enter Email Address...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
+                                            <input type="password" name="password" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Password">
                                         </div>
                                         <div class="form-group">

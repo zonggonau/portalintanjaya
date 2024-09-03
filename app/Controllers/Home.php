@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\NewsModel;
+
 class Home extends BaseController
 {
     public function index(): string
@@ -28,8 +30,19 @@ class Home extends BaseController
 
     public function berita(): string
     {
-        return view('frontend/pages/berita');
+        $newsModel = new NewsModel();
+        $data['news'] = $newsModel->getAllNews();
+        return view('frontend/pages/berita', $data);
     }
+
+    public function BeritaDetails($slug): string
+    {
+        $newsModel = new NewsModel();
+        $data['news'] = $newsModel->getNewsBySlug($slug);
+
+        return view('frontend/pages/berita_details', $data);
+    }
+
 
     public function galeri(): string
     {

@@ -1,6 +1,6 @@
 <footer id="footer" class="footer dark-background">
 
-    <div class="footer-top">
+    <!-- <div class="footer-top">
         <div class="container">
             <div class="row gy-4">
                 <div class="col-lg-4 col-md-6 footer-about">
@@ -56,7 +56,7 @@
 
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="copyright">
         <div class="container text-center">

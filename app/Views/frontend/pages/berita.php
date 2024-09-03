@@ -1,6 +1,6 @@
 <?= $this->extend('frontend/template/layout') ?>
 <?= $this->section('frontend') ?>
-
+<?= print_r('news') ?>
 <section id="profile" class="profile section dark-background">
     <!-- <img src="assets/img/logokabij.jpg" alt="" data-aos="fade-in"> -->
     <div class="container">
@@ -45,123 +45,26 @@
     <div class="container">
 
         <div class="row gy-4">
-
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="blog-card position-relative">
-                    <!-- Background Image -->
-                    <div class="blog-card-image" style="background-image: url('<?= base_url('assets/img/apel.jpeg') ?>');"></div>
-                    <!-- Blog Content -->
-                    <div class="blog-card-content">
-                        <a href="blog-details.html" class="stretched-link">
-                            <h3>Blog Post Title</h3>
-                        </a>
-                        <p class="blog-date bi">August 28, 2024</p>
-                        <p class="blog-excerpt">Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
-                        <a href="#" class="share-link" style="font-size: 25px;"><i class="bi bi-facebook"></i></a>&nbsp;&nbsp;&nbsp;
-                        <a href="#" class="share-link" style="font-size: 25px;"><i class="bi bi-twitter"></i></a>&nbsp;&nbsp;&nbsp;
-                        <a href="#" class="share-link" style="font-size: 25px;"><i class="bi bi-whatsapp"></i></a>
+            <?php foreach ($news as $item): ?>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="blog-card position-relative">
+                        <!-- Background Image -->
+                        <div class="blog-card-image" style="background-image: url('<?= $item['thumbnail'] ?? base_url('assets/img/default-thumbnail.jpg') ?>');"></div>
+                        <!-- Blog Content -->
+                        <div class="blog-card-content">
+                            <a href="<?= site_url('berita/' . $item['slug']) ?>" class="stretched-link">
+                                <h3><?= $item['judul'] ?></h3>
+                            </a>
+                            <p class="blog-date bi"><?= date('F j, Y', strtotime($item['published_at'])) ?></p>
+                            <p class="blog-excerpt"><?= $item['konten'] ?></p>
+                            <a href="#" class="share-link" style="font-size: 25px;"><i class="bi bi-facebook"></i></a>&nbsp;&nbsp;&nbsp;
+                            <a href="#" class="share-link" style="font-size: 25px;"><i class="bi bi-twitter"></i></a>&nbsp;&nbsp;&nbsp;
+                            <a href="#" class="share-link" style="font-size: 25px;"><i class="bi bi-whatsapp"></i></a>
+                        </div>
                     </div>
-                </div>
-            </div><!-- End Blog Card -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="blog-card position-relative">
-                    <!-- Background Image -->
-                    <div class="blog-card-image" style="background-image: url('<?= base_url('assets/img/apel.jpeg') ?>');"></div>
-                    <!-- Blog Content -->
-                    <div class="blog-card-content">
-                        <a href="blog-details.html" class="stretched-link">
-                            <h3>Blog Post Title</h3>
-                        </a>
-                        <p class="blog-date bi">August 28, 2024</p>
-                        <p class="blog-excerpt">Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
-                        <a href="#" class="share-link" style="font-size: 25px;"><i class="bi bi-facebook"></i></a>&nbsp;&nbsp;&nbsp;
-                        <a href="#" class="share-link" style="font-size: 25px;"><i class="bi bi-twitter"></i></a>&nbsp;&nbsp;&nbsp;
-                        <a href="#" class="share-link" style="font-size: 25px;"><i class="bi bi-whatsapp"></i></a>
-                    </div>
-                </div>
-            </div><!-- End Blog Card -->
+                </div><!-- End Blog Card -->
+            <?php endforeach; ?>
 
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="blog-card position-relative">
-                    <!-- Background Image -->
-                    <div class="blog-card-image" style="background-image: url('<?= base_url('assets/img/apel.jpeg') ?>');"></div>
-                    <!-- Blog Content -->
-                    <div class="blog-card-content">
-                        <a href="blog-details.html" class="stretched-link">
-                            <h3>Blog Post Title</h3>
-                        </a>
-                        <p class="blog-date bi">August 28, 2024</p>
-                        <p class="blog-excerpt">Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
-                        <a href="#" class="share-link" style="font-size: 25px;"><i class="bi bi-facebook"></i></a>&nbsp;&nbsp;&nbsp;
-                        <a href="#" class="share-link" style="font-size: 25px;"><i class="bi bi-twitter"></i></a>&nbsp;&nbsp;&nbsp;
-                        <a href="#" class="share-link" style="font-size: 25px;"><i class="bi bi-whatsapp"></i></a>
-                    </div>
-                </div>
-            </div><!-- End Blog Card -->
-
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="service-item position-relative">
-                    <div class="icon">
-                        <i class="bi bi-broadcast"></i>
-                    </div>
-                    <a href="service-details.html" class="stretched-link">
-                        <h3>Eosle Commodi</h3>
-                    </a>
-                    <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
-                </div>
-            </div>
-
-
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                <div class="service-item position-relative">
-                    <div class="icon">
-                        <i class="bi bi-easel"></i>
-                    </div>
-                    <a href="service-details.html" class="stretched-link">
-                        <h3>Ledo Markt</h3>
-                    </a>
-                    <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p>
-                </div>
-            </div><!-- End Service Item -->
-
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                <div class="service-item position-relative">
-                    <div class="icon">
-                        <i class="bi bi-facebook"></i>
-                    </div>
-                    <a href="service-details.html" class="stretched-link">
-                        <h3>Asperiores Commodit</h3>
-                    </a>
-                    <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p>
-                    <a href="service-details.html" class="stretched-link"></a>
-                </div>
-            </div><!-- End Service Item -->
-
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-                <div class="service-item position-relative">
-                    <div class="icon">
-                        <i class="bi bi-calendar4-week"></i>
-                    </div>
-                    <a href="service-details.html" class="stretched-link">
-                        <h3>Velit Doloremque</h3>
-                    </a>
-                    <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem alias eius labore.</p>
-                    <a href="service-details.html" class="stretched-link"></a>
-                </div>
-            </div><!-- End Service Item -->
-
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-                <div class="service-item position-relative">
-                    <div class="icon">
-                        <i class="bi bi-chat-square-text"></i>
-                    </div>
-                    <a href="service-details.html" class="stretched-link">
-                        <h3>Dolori Architecto</h3>
-                    </a>
-                    <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti recusandae ducimus enim.</p>
-                    <a href="service-details.html" class="stretched-link"></a>
-                </div>
-            </div><!-- End Service Item -->
 
         </div>
 

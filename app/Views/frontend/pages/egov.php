@@ -12,7 +12,7 @@
             </div>
         </div>
 
-        <div class="row gy-4 mt-5 justify-content-center" data-aos="fade-up" data-aos-delay="200">
+        <!-- <div class="row gy-4 mt-5 justify-content-center" data-aos="fade-up" data-aos-delay="200">
             <div class="col-xl-4 col-md-4" data-aos="fade-up" data-aos-delay="300" style="cursor: pointer;" @click="showSejarah = !showSejarah">
                 <div class="icon-box">
                     <i class="bi bi-binoculars"></i>
@@ -35,7 +35,7 @@
 
             </div>
 
-        </div>
+        </div> -->
 
     </div>
 </section>

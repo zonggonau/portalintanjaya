@@ -22,7 +22,7 @@
             <div class="col-xl-6 col-lg-8">
                 <h3><b>WEBSITE RESMI PEMERINTAH</b></h3>
                 <h1><b>KABUPATEN INTAN JAYA</b></h1>
-                <p>"Ondoma dangge inia hanggia dua dia"</p>
+                <p class="font-weight-bold">"Ondoma dangge inia hainggia duadia"</p>
             </div>
         </div>
 

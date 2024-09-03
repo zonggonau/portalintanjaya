@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Models;
+
 use CodeIgniter\Model;
 
 class UserModel extends Model
@@ -11,10 +13,13 @@ class UserModel extends Model
 
     public function get_user($username, $password)
     {
-        $user = $this->where('username', $username)
-            ->where('password', md5($password))
-            ->first();
+        $user = $this->where('username', $username)->first();
 
-        return $user;
+        if ($user && password_verify($password, $user['password'])) {
+            return $user;
+        } else {
+            // Handle user not found or incorrect password
+            return false; // Or throw an exception
+        }
     }
 }

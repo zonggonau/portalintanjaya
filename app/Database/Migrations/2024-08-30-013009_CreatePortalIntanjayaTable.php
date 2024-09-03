@@ -1,0 +1,221 @@
+<?php
+
+namespace App\Database\Migrations;
+
+use CodeIgniter\Database\Migration;
+
+class CreatePortalIntanjayaTable extends Migration
+{
+    public function up()
+    {
+        // 1. Tabel informasi_publik
+        $this->forge->addField([
+            'info_id' => ['type' => 'INT', 'unsigned' => true, 'auto_increment' => true],
+            'judul' => ['type' => 'VARCHAR', 'constraint' => '255'],
+            'deskripsi' => ['type' => 'TEXT'],
+            'kategori' => ['type' => 'VARCHAR', 'constraint' => '100'], // Ditambahkan kategori
+            'file_dokumen' => ['type' => 'VARCHAR', 'constraint' => '255', 'null' => true],
+            'published_at' => ['type' => 'TIMESTAMP', 'null' => true],
+            'created_by' => ['type' => 'INT', 'unsigned' => true],
+            'updated_by' => ['type' => 'INT', 'unsigned' => true, 'null' => true], // Relasi ke user
+            'created_at' => ['type' => 'TIMESTAMP', 'null' => true],
+            'updated_at' => ['type' => 'TIMESTAMP', 'null' => true],
+        ]);
+        $this->forge->addKey('info_id', true);
+        $this->forge->createTable('informasi_publik');
+
+        // 2. Tabel layanan_publik
+        $this->forge->addField([
+            'layanan_id' => ['type' => 'INT', 'unsigned' => true, 'auto_increment' => true],
+            'nama_layanan' => ['type' => 'VARCHAR', 'constraint' => '255'],
+            'deskripsi' => ['type' => 'TEXT'],
+            'kategori' => ['type' => 'VARCHAR', 'constraint' => '100'], // Ditambahkan kategori
+            'kontak' => ['type' => 'VARCHAR', 'constraint' => '255'],
+            'link_layanan' => ['type' => 'VARCHAR', 'constraint' => '255', 'null' => true],
+            'created_by' => ['type' => 'INT', 'unsigned' => true],
+            'updated_by' => ['type' => 'INT', 'unsigned' => true, 'null' => true], // Relasi ke user
+            'created_at' => ['type' => 'TIMESTAMP', 'null' => true],
+            'updated_at' => ['type' => 'TIMESTAMP', 'null' => true],
+        ]);
+        $this->forge->addKey('layanan_id', true);
+
+        $this->forge->createTable('layanan_publik');
+
+        // 3. Tabel pengadaan_barang_jasa
+        $this->forge->addField([
+            'pengadaan_id' => ['type' => 'INT', 'unsigned' => true, 'auto_increment' => true],
+            'nama_pengadaan' => ['type' => 'VARCHAR', 'constraint' => '255'],
+            'deskripsi' => ['type' => 'TEXT'],
+            'kategori' => ['type' => 'VARCHAR', 'constraint' => '100'], // Ditambahkan kategori
+            'tanggal_pengadaan' => ['type' => 'DATE'],
+            'vendor' => ['type' => 'VARCHAR', 'constraint' => '255'],
+            'anggaran' => ['type' => 'DECIMAL', 'constraint' => '15,2'],
+            'file_dokumen' => ['type' => 'VARCHAR', 'constraint' => '255', 'null' => true],
+            'created_by' => ['type' => 'INT', 'unsigned' => true],
+            'updated_by' => ['type' => 'INT', 'unsigned' => true, 'null' => true], // Relasi ke user
+            'created_at' => ['type' => 'TIMESTAMP', 'null' => true],
+            'updated_at' => ['type' => 'TIMESTAMP', 'null' => true],
+        ]);
+        $this->forge->addKey('pengadaan_id', true);
+
+        $this->forge->createTable('pengadaan_barang_jasa');
+
+        // 4. Tabel peraturan_daerah
+        $this->forge->addField([
+            'perda_id' => ['type' => 'INT', 'unsigned' => true, 'auto_increment' => true],
+            'judul_perda' => ['type' => 'VARCHAR', 'constraint' => '255'],
+            'deskripsi' => ['type' => 'TEXT'],
+            'kategori' => ['type' => 'VARCHAR', 'constraint' => '100'], // Ditambahkan kategori
+            'nomor_perda' => ['type' => 'VARCHAR', 'constraint' => '100'],
+            'tahun_perda' => ['type' => 'YEAR'],
+            'file_dokumen' => ['type' => 'VARCHAR', 'constraint' => '255', 'null' => true],
+            'created_by' => ['type' => 'INT', 'unsigned' => true],
+            'updated_by' => ['type' => 'INT', 'unsigned' => true, 'null' => true], // Relasi ke user
+            'published_at' => ['type' => 'TIMESTAMP', 'null' => true],
+            'created_at' => ['type' => 'TIMESTAMP', 'null' => true],
+            'updated_at' => ['type' => 'TIMESTAMP', 'null' => true],
+        ]);
+        $this->forge->addKey('perda_id', true);
+
+        $this->forge->createTable('peraturan_daerah');
+
+        // 5. Tabel apbd
+        $this->forge->addField([
+            'apbd_id' => ['type' => 'INT', 'unsigned' => true, 'auto_increment' => true],
+            'tahun_anggaran' => ['type' => 'YEAR'],
+            'kategori' => ['type' => 'VARCHAR', 'constraint' => '100'], // Ditambahkan kategori
+            'pendapatan' => ['type' => 'DECIMAL', 'constraint' => '15,2'],
+            'belanja' => ['type' => 'DECIMAL', 'constraint' => '15,2'],
+            'pembiayaan' => ['type' => 'DECIMAL', 'constraint' => '15,2'],
+            'file_dokumen' => ['type' => 'VARCHAR', 'constraint' => '255', 'null' => true],
+            'created_by' => ['type' => 'INT', 'unsigned' => true],
+            'updated_by' => ['type' => 'INT', 'unsigned' => true, 'null' => true], // Relasi ke user
+            'created_at' => ['type' => 'TIMESTAMP', 'null' => true],
+            'updated_at' => ['type' => 'TIMESTAMP', 'null' => true],
+        ]);
+        $this->forge->addKey('apbd_id', true);
+
+        $this->forge->createTable('apbd');
+
+
+        // 6. Tabel news (berita)
+        $this->forge->addField([
+            'news_id' => ['type' => 'INT', 'unsigned' => true, 'auto_increment' => true],
+            'judul' => ['type' => 'VARCHAR', 'constraint' => '255'],
+            'konten' => ['type' => 'TEXT'],
+            'kategori' => ['type' => 'VARCHAR', 'constraint' => '100'], // Ditambahkan kategori
+            'thumbnail' => ['type' => 'VARCHAR', 'constraint' => '255', 'null' => true],
+            'slug' => ['type' => 'VARCHAR', 'constraint' => '255', 'null' => true], // Ditambahkan slug
+            'published_at' => ['type' => 'TIMESTAMP', 'null' => true],
+            'created_by' => ['type' => 'INT', 'unsigned' => true],
+            'updated_by' => ['type' => 'INT', 'unsigned' => true, 'null' => true], // Relasi ke user
+            'created_at' => ['type' => 'TIMESTAMP', 'null' => true],
+            'updated_at' => ['type' => 'TIMESTAMP', 'null' => true],
+        ]);
+        $this->forge->addKey('news_id', true);
+
+        $this->forge->createTable('news');
+
+        // 7. Tabel featured (untuk hero dan banner ucapan)
+        $this->forge->addField([
+            'featured_id' => ['type' => 'INT', 'unsigned' => true, 'auto_increment' => true],
+            'judul' => ['type' => 'VARCHAR', 'constraint' => '255'],
+            'image' => ['type' => 'VARCHAR', 'constraint' => '255'],
+            'kategori' => ['type' => 'VARCHAR', 'constraint' => '100'], // Ditambahkan kategori
+            'link' => ['type' => 'VARCHAR', 'constraint' => '255', 'null' => true],
+            'published_at' => ['type' => 'TIMESTAMP', 'null' => true],
+            'created_by' => ['type' => 'INT', 'unsigned' => true],
+            'updated_by' => ['type' => 'INT', 'unsigned' => true, 'null' => true], // Relasi ke user
+            'created_at' => ['type' => 'TIMESTAMP', 'null' => true],
+            'updated_at' => ['type' => 'TIMESTAMP', 'null' => true],
+        ]);
+        $this->forge->addKey('featured_id', true);
+
+        $this->forge->createTable('featured');
+
+        // 8. Tabel pages (halaman statis)
+        $this->forge->addField([
+            'page_id' => ['type' => 'INT', 'unsigned' => true, 'auto_increment' => true],
+            'judul' => ['type' => 'VARCHAR', 'constraint' => '255'],
+            'konten' => ['type' => 'TEXT'],
+            'slug' => ['type' => 'VARCHAR', 'constraint' => '255', 'unique' => true],
+            'kategori' => ['type' => 'VARCHAR', 'constraint' => '100'], // Ditambahkan kategori
+            'created_by' => ['type' => 'INT', 'unsigned' => true],
+            'updated_by' => ['type' => 'INT', 'unsigned' => true, 'null' => true], // Relasi ke user
+            'created_at' => ['type' => 'TIMESTAMP', 'null' => true],
+            'updated_at' => ['type' => 'TIMESTAMP', 'null' => true],
+        ]);
+        $this->forge->addKey('page_id', true);
+
+        $this->forge->createTable('pages');
+
+        // 9. Tabel seo (untuk SEO website)
+        $this->forge->addField([
+            'seo_id' => ['type' => 'INT', 'unsigned' => true, 'auto_increment' => true],
+            'page' => ['type' => 'VARCHAR', 'constraint' => '255'],
+            'meta_title' => ['type' => 'VARCHAR', 'constraint' => '255'],
+            'meta_description' => ['type' => 'TEXT'],
+            'meta_keywords' => ['type' => 'TEXT', 'null' => true],
+            'created_at' => ['type' => 'TIMESTAMP', 'null' => true],
+            'updated_at' => ['type' => 'TIMESTAMP', 'null' => true],
+        ]);
+        $this->forge->addKey('seo_id', true);
+        $this->forge->createTable('seo');
+
+        // 10. Tabel gallery
+        $this->forge->addField([
+            'gallery_id' => ['type' => 'INT', 'unsigned' => true, 'auto_increment' => true],
+            'title' => ['type' => 'VARCHAR', 'constraint' => '255'],
+            'image' => ['type' => 'VARCHAR', 'constraint' => '255'],
+            'caption' => ['type' => 'TEXT', 'null' => true],
+            'created_by' => ['type' => 'INT', 'unsigned' => true],
+            'updated_by' => ['type' => 'INT', 'unsigned' => true, 'null' => true], // Relasi ke user
+            'created_at' => ['type' => 'TIMESTAMP', 'null' => true],
+            'updated_at' => ['type' => 'TIMESTAMP', 'null' => true],
+        ]);
+        $this->forge->addKey('gallery_id', true);
+
+        $this->forge->createTable('gallery');
+
+        // 11. Tabel kontak
+        $this->forge->addField([
+            'kontak_id' => ['type' => 'INT', 'unsigned' => true, 'auto_increment' => true],
+            'nama' => ['type' => 'VARCHAR', 'constraint' => '255'],
+            'email' => ['type' => 'VARCHAR', 'constraint' => '255'],
+            'pesan' => ['type' => 'TEXT'],
+            'created_by' => ['type' => 'INT', 'unsigned' => true],
+            'created_at' => ['type' => 'TIMESTAMP', 'null' => true],
+        ]);
+        $this->forge->addKey('kontak_id', true);
+
+        $this->forge->createTable('kontak');
+
+        // Tambahkan tabel kategori
+        $this->forge->addField([
+            'kategori_id' => ['type' => 'INT', 'unsigned' => true, 'auto_increment' => true],
+            'nama' => ['type' => 'VARCHAR', 'constraint' => '255'],
+            'slug' => ['type' => 'VARCHAR', 'constraint' => '255'],
+            'deskripsi' => ['type' => 'TEXT', 'null' => true],
+            'created_at' => ['type' => 'TIMESTAMP', 'null' => true],
+            'updated_at' => ['type' => 'TIMESTAMP', 'null' => true],
+        ]);
+        $this->forge->addKey('kategori_id', true);
+        $this->forge->createTable('kategori');
+    }
+
+
+    public function down()
+    {
+        $this->forge->dropTable('informasi_publik');
+        $this->forge->dropTable('layanan_publik');
+        $this->forge->dropTable('pengadaan_barang_jasa');
+        $this->forge->dropTable('peraturan_daerah');
+        $this->forge->dropTable('apbd');
+        $this->forge->dropTable('news');
+        $this->forge->dropTable('featured');
+        $this->forge->dropTable('pages');
+        $this->forge->dropTable('seo');
+        $this->forge->dropTable('gallery');
+        $this->forge->dropTable('kontak');
+    }
+}
