@@ -1,6 +1,6 @@
 <?= $this->extend('frontend/template/layout') ?>
 <?= $this->section('frontend') ?>
-<?= print_r('news') ?>
+
 <section id="profile" class="profile section dark-background">
     <!-- <img src="assets/img/logokabij.jpg" alt="" data-aos="fade-in"> -->
     <div class="container">
@@ -55,8 +55,8 @@
                             <a href="<?= site_url('berita/' . $item['slug']) ?>" class="stretched-link">
                                 <h3><?= $item['judul'] ?></h3>
                             </a>
-                            <p class="blog-date bi"><?= date('F j, Y', strtotime($item['published_at'])) ?></p>
-                            <p class="blog-excerpt"><?= $item['konten'] ?></p>
+                            <p class="blog-date bi"><?= date('F j, Y', strtotime($item['publish_date'])) ?></p>
+                            <!-- <p class="blog-excerpt"><?= $item['konten'] ?></p> -->
                             <a href="#" class="share-link" style="font-size: 25px;"><i class="bi bi-facebook"></i></a>&nbsp;&nbsp;&nbsp;
                             <a href="#" class="share-link" style="font-size: 25px;"><i class="bi bi-twitter"></i></a>&nbsp;&nbsp;&nbsp;
                             <a href="#" class="share-link" style="font-size: 25px;"><i class="bi bi-whatsapp"></i></a>

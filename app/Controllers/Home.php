@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\NewsModel;
+use App\Models\InformasiModel;
 
 class Home extends BaseController
 {
@@ -30,16 +30,16 @@ class Home extends BaseController
 
     public function berita(): string
     {
-        $newsModel = new NewsModel();
-        $data['news'] = $newsModel->getAllNews();
+        $infoModel = new InformasiModel();
+        $data['news'] = $infoModel->getAllInfo();
         return view('frontend/pages/berita', $data);
     }
 
     public function BeritaDetails($slug): string
     {
-        $newsModel = new NewsModel();
-        $data['news'] = $newsModel->getNewsBySlug($slug);
-
+        $infoModel = new InformasiModel();
+        $data['info'] = $infoModel->getNewsBySlug($slug);
+        // dd($data);
         return view('frontend/pages/berita_details', $data);
     }
 
