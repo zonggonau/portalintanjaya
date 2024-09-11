@@ -16,6 +16,7 @@ class InformasiModel extends Model
         'slug',
         'user_id',
         'status',
+        'file_dokumen',
         'publish_date',
         'created_by',
         'updated_by',

@@ -82,7 +82,7 @@ class Dashboard extends BaseController
                 'kategori' => 'required|integer',
                 'thumbnail' => 'permit_empty|is_image[thumbnail]|max_size[thumbnail,2048]|ext_in[thumbnail,png,jpg,jpeg]',
                 'status' => 'required|in_list[draft,published,archived]',
-                'files' => 'permit_empty|is_image[thumbnail]|max_size[thumbnail,2048]|ext_in[thumbnail,png,jpg,jpeg]',
+                'files' => 'permit_empty|max_size[files,2048]|ext_in[files,pdf,doc,docx,xls,xlsx,ppt,pptx]',
                 'publish_date' => 'permit_empty|valid_date'
 
             ]);
@@ -106,20 +106,19 @@ class Dashboard extends BaseController
             }
 
             // Handling file upload for thumbnail if exists
-            $files = $this->request->getFile('files');
-            $savedFilePath = "assets/lib/files"; // Inisialisasi variabel untuk path file yang tersimpan
-
-            if ($files && $files->isValid()) {
-                $newFileName = $files->getRandomName();
-                // Pindahkan file ke direktori tujuan dengan nama asli
-                $files->move($savedFilePath, $newFileName);
-
-                // Dapatkan nama file setelah dipindahkan
-                $savedFilePath = 'assets/lib/files/' . $newFileName;
+            $files = $this->request->getFiles();
+            $savedFilesPath = "assets/lib/files/"; // Inisialisasi variabel untuk path file yang tersimpan
+            if ($files) {
+                foreach ($files['files'] as $file) {
+                    if ($file->isValid()) {
+                        $newFileName = $file->getRandomName();
+                        $file->move($savedFilesPath, $newFileName);
+                        // Dapatkan nama file setelah dipindahkan
+                        // dd($savedFilePath);
+                        $savedFilesPath = 'assets/lib/files/' . $newFileName;
+                    }
+                }
             }
-
-
-
             // Prepare the data for saving
 
             $data = [
@@ -130,7 +129,7 @@ class Dashboard extends BaseController
                 'slug' => $createSlug->create_slug($this->request->getPost('judul')),
                 'user_id' => 1,
                 'status' => $this->request->getPost('status'),
-                'file_dokumen' => $this->request->getPost('files'),
+                'file_dokumen' => $savedFilesPath,
                 'publish_date' => $this->request->getPost('publish_date')
             ];
 

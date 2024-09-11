@@ -41,9 +41,7 @@
 
                         <div class="mb-3">
                             <label for="sommernote" class="form-label">Konten</label>
-
                             <textarea class="form-control <?= (session('errors.konten')) ? 'is-invalid' : '' ?>" id="summernote" name="konten"><?= old('konten') ?></textarea>
-
                             <?php if (session('errors.konten')): ?>
                                 <div class="invalid-feedback">
                                     <?= session('errors.konten') ?>
@@ -61,16 +59,7 @@
                             <?php endif; ?>
                         </div>
                         <div class="mb-3">
-                            <label for="file" class="form-label">File - pdf, doc, ppt, exl (Optional)</label>
-                            <input type="file" class="form-control <?= (session('errors.file')) ? 'is-invalid' : '' ?>" id="file" name="files[]" multiple>
-                            <?php if (session('errors.file')): ?>
-                                <div class="invalid-feedback">
-                                    <?= session('errors.file') ?>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                        <div class="mb-3">
-                            <label for="file" class="form-label">File - pdf, doc, ppt, exl (Optional)</label>
+                            <label for="file" class="form-label">File - pdf, doc, ppt, exl (Opsional)</label>
                             <input type="file" class="form-control <?= (session('errors.file')) ? 'is-invalid' : '' ?>" id="file" name="files[]" multiple>
                             <?php if (session('errors.file')): ?>
                                 <div class="invalid-feedback">
@@ -127,102 +116,4 @@
         </div>
     </div>
 
-    <!-- <div class="modal-content">
-        <div class="container mt-5">
-            <h2>Form Input Berita</h2>
-
-            <input type="file" id="fileUploadInput" style="display:non;" />
-
-            <?php if (session()->has('errors')): ?>
-                <div class="alert alert-danger">
-                    <ul>
-                        <?php foreach (session('errors') as $error): ?>
-                            <li><?= esc($error) ?></li>
-                        <?php endforeach ?>
-                    </ul>
-                </div>
-            <?php endif; ?>
-
-            <form action="/dashboard/save" method="post" enctype="multipart/form-data">
-                <?= csrf_field() ?>
-
-
-                <div class="mb-3">
-                    <label for="judul" class="form-label">Judul</label>
-                    <input type="text" class="form-control <?= (session('errors.judul')) ? 'is-invalid' : '' ?>" id="judul" name="judul" value="<?= old('judul') ?>" maxlength="255">
-                    <?php if (session('errors.judul')): ?>
-                        <div class="invalid-feedback">
-                            <?= session('errors.judul') ?>
-                        </div>
-                    <?php endif; ?>
-                </div>
-
-                <div class="mb-3">
-                    <label for="sommernote" class="form-label">Konten</label>
-
-                    <textarea class="form-control <?= (session('errors.konten')) ? 'is-invalid' : '' ?>" id="summernote" name="konten"><?= old('konten') ?></textarea>
-
-                    <?php if (session('errors.konten')): ?>
-                        <div class="invalid-feedback">
-                            <?= session('errors.konten') ?>
-                        </div>
-                    <?php endif; ?>
-                </div>
-
-
-                <div class="mb-3">
-                    <label for="kategori" class="form-label">Kategori</label>
-                    <select class="form-control <?= (session('errors.kategori')) ? 'is-invalid' : '' ?>" id="kategori" name="kategori">
-                        <option value="">-- Pilih Kategori --</option>
-                        <?php foreach ($kategori as $kat): ?>
-                            <option value="<?= $kat['id'] ?>" <?= (old('kategori') == $kat['id']) ? 'selected' : '' ?>>
-                                <?= $kat['nama_kategori'] ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                    <?php if (session('errors.kategori')): ?>
-                        <div class="invalid-feedback">
-                            <?= session('errors.kategori') ?>
-                        </div>
-                    <?php endif; ?>
-                </div>
-
-
-
-                <div class="mb-3">
-                    <label for="thumbnail" class="form-label">Thumbnail (Opsional)</label>
-                    <input type="file" class="form-control <?= (session('errors.thumbnail')) ? 'is-invalid' : '' ?>" id="thumbnail" name="thumbnail">
-                    <?php if (session('errors.thumbnail')): ?>
-                        <div class="invalid-feedback">
-                            <?= session('errors.thumbnail') ?>
-                        </div>
-                    <?php endif; ?>
-                </div>
-
-                <div class="mb-3">
-                    <label for="status" class="form-label">Status</label>
-                    <select class="form-select <?= (session('errors.status')) ? 'is-invalid' : '' ?>" id="status" name="status">
-                        <option value="0" <?= (old('status') == '0') ? 'selected' : '' ?>>Draft</option>
-                        <option value="1" <?= (old('status') == '1') ? 'selected' : '' ?>>Published</option>
-                    </select>
-                    <?php if (session('errors.status')): ?>
-                        <div class="invalid-feedback">
-                            <?= session('errors.status') ?>
-                        </div>
-                    <?php endif; ?>
-                </div>
-
-
-
-
-
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
-    </div> -->
-</div>
-
-
-
-
-<?= $this->endSection('backend') ?>
+    <?= $this->endSection('backend') ?>
