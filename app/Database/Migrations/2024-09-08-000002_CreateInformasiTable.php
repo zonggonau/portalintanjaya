@@ -80,7 +80,7 @@ class CreateInformasiTable extends Migration
         ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('kategori_id', 'kategori', 'kategori_id', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('kategori_id', 'kategori', 'id', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('user_id', 'users', 'id', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('created_by', 'users', 'id', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('updated_by', 'users', 'id', 'CASCADE', 'CASCADE');
