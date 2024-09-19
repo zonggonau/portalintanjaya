@@ -49,14 +49,14 @@
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="blog-card position-relative">
                         <!-- Background Image -->
-                        <div class="blog-card-image" style="background-image: url('<?= $item['thumbnail'] ?? base_url('assets/img/default-thumbnail.jpg') ?>');"></div>
+                        <div class="blog-card-image" style="background-image: url('<?= $item->thumbnail ?? base_url('assets/img/default-thumbnail.jpg') ?>');"></div>
                         <!-- Blog Content -->
                         <div class="blog-card-content">
-                            <a href="<?= site_url('berita/' . $item['slug']) ?>" class="stretched-link">
-                                <h3><?= $item['judul'] ?></h3>
+                            <a href="<?= site_url('berita/' . $item->slug) ?>" class="stretched-link">
+                                <h3><?= $item->judul ?></h3>
                             </a>
-                            <p class="blog-date bi"><?= date('F j, Y', strtotime($item['publish_date'])) ?></p>
-                            <!-- <p class="blog-excerpt"><?= $item['konten'] ?></p> -->
+                            <p class="blog-date bi"><?= date('F j, Y', strtotime($item->publish_date)) ?></p>
+                            <!-- <p class="blog-excerpt"><?= $item->konten ?></p> -->
                             <a href="#" class="share-link" style="font-size: 25px;"><i class="bi bi-facebook"></i></a>&nbsp;&nbsp;&nbsp;
                             <a href="#" class="share-link" style="font-size: 25px;"><i class="bi bi-twitter"></i></a>&nbsp;&nbsp;&nbsp;
                             <a href="#" class="share-link" style="font-size: 25px;"><i class="bi bi-whatsapp"></i></a>

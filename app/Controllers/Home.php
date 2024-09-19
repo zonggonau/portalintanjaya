@@ -8,8 +8,10 @@ class Home extends BaseController
 {
     public function index(): string
     {
-
-        return view('frontend/pages/index');
+        $infoModel = new InformasiModel();
+        $data['info'] = $infoModel->getPengumuman();
+        $data['egov'] = $infoModel->getLayananPublik();
+        return view('frontend/pages/index', $data);
     }
 
 
@@ -20,18 +22,22 @@ class Home extends BaseController
 
     public function dokumen(): string
     {
-        return view('frontend/pages/dokumen');
+        $infoModel = new InformasiModel();
+        $data['doc'] = $infoModel->getDocumentPublik();
+        return view('frontend/pages/dokumen', $data);
     }
 
     public function egov(): string
     {
-        return view('frontend/pages/egov');
+        $infoModel = new InformasiModel();
+        $data['egov'] = $infoModel->getLayananPublik();
+        return view('frontend/pages/egov', $data);
     }
 
     public function berita(): string
     {
         $infoModel = new InformasiModel();
-        $data['news'] = $infoModel->getAllInfo();
+        $data['news'] = $infoModel->getBerita();
         return view('frontend/pages/berita', $data);
     }
 

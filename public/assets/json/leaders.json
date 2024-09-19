@@ -1,0 +1,47 @@
+{
+    "leaders": [
+      {
+        "name": "Zhakarias Marey",
+        "position": "Penjabat Bupati",
+        "profile_picture": "assets/json/img/pjbupati-marey.png",
+        "term": "2024"
+      },
+      {
+        "name": "Apolos Bagau",
+        "position": "Penjabat Bupati",
+        "profile_picture": "assets/json/img/apolos-bagau.jpg",
+        "term": "2022 - 2024"
+      },
+      {
+        "name": "Natalis Tabuni",
+        "position": "Bupati",
+        "profile_picture": "assets/json/img/bupati-tabuni.jpeg",
+        "term": "2018 - 2022"
+      },
+      {
+        "name": "Frans Mote",
+        "position": "Penjabat Bupati",
+        "profile_picture": "https://png.pngtree.com/png-clipart/20221020/original/pngtree-kepala-daerah-png-image_8708543.png",
+        "term": "2017 - 2018"
+      },
+      {
+        "name": "Natalis Tabuni",
+        "position": "Bupati",
+        "profile_picture": "assets/json/img/bupati-tabuni.jpeg",
+        "term": "2012 - 2017"
+      },
+      {
+        "name": "David Setiawan",
+        "position": "Penjabat Bupati",
+        "profile_picture": "https://png.pngtree.com/png-clipart/20221020/original/pngtree-kepala-daerah-png-image_8708543.png",
+        "term": "2010 - 2012"
+      },
+      {
+        "name": "Maximus Zonggonau",
+        "position": "Penjabat Bupati",
+        "profile_picture": "https://png.pngtree.com/png-clipart/20221020/original/pngtree-kepala-daerah-png-image_8708543.png",
+        "term": "2009 - 2010"
+      }
+    ]
+  }
+  

@@ -55,6 +55,27 @@
 
     <!-- Template Main JS File -->
     <script src="<?= base_url('assets/js/main.js') ?>"></script>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('fetchLeaders', () => ({
+                leaders: [],
+                loading: true,
+
+                async init() {
+                    try {
+                        const response = await fetch('/assets/json/leaders.json');
+                        if (!response.ok) throw new Error('Failed to fetch');
+                        const data = await response.json();
+                        this.leaders = data.leaders;
+                    } catch (error) {
+                        console.error('Error fetching JSON:', error);
+                    } finally {
+                        this.loading = false;
+                    }
+                }
+            }));
+        });
+    </script>
 
 </body>
 

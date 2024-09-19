@@ -50,6 +50,10 @@ class CreateInformasiTable extends Migration
                 'constraint' => '255',
                 'null' => true,
             ],
+            'website' => [
+                'type' => 'VARCHAR',
+                'constraint' => '100',
+            ],
             'publish_date' => [
                 'type' => 'DATETIME',
                 'null' => true,

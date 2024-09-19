@@ -169,12 +169,21 @@
         <div class="topbar-divider d-none d-sm-block"></div>
 
 
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+        <li class="nav-item dropdown" x-data="{ open: false }">
+            <a class="nav-link dropdown-toggle" href="#" role="button" @click="open = !open">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <?php echo auth()->user()->username; ?></span>
             </a>
             <!-- Dropdown - User Information -->
-            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in">
+            <div class="dropdown-men dropdown-menu-right shadow animated--grow-in"
+                x-show="open"
+                @click.away="open = false"
+                x-transition:enter="transition ease-out duration-100"
+                x-transition:enter-start="transform opacity-0 scale-95"
+                x-transition:enter-end="transform opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-75"
+                x-transition:leave-start="transform opacity-100 scale-100"
+                x-transition:leave-end="transform opacity-0 scale-95"
+                style="display: none;">
                 <a class="dropdown-item" href="#">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profile
@@ -188,12 +197,14 @@
                     Activity Log
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="/logout" data-toggle="modal" data-target="#logoutModal">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     Logout
                 </a>
             </div>
         </li>
+
+
 
 
     </ul>

@@ -49,24 +49,35 @@
                                 </div>
                             <?php endif; ?>
                         </div>
-                        <div class="mb-3">
-                            <label for="thumbnail" class="form-label">Thumbnail (Opsional)</label>
-                            <input type="file" class="form-control <?= (session('errors.thumbnail')) ? 'is-invalid' : '' ?>" id="thumbnail" name="thumbnail">
-                            <?php if ($post['thumbnail']): ?>
-                                <img src="<?= base_url($post['thumbnail']) ?>" alt="Thumbnail" class="img-thumbnail mt-2" style="width: 500px;">
-                            <?php endif; ?>
-                            <?php if (session('errors.thumbnail')): ?>
-                                <div class="invalid-feedback">
-                                    <?= session('errors.thumbnail') ?>
-                                </div>
-                            <?php endif; ?>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="thumbnail" class="form-label">Thumbnail (Opsional)</label>
+                                <input type="file" class="form-control <?= (session('errors.thumbnail')) ? 'is-invalid' : '' ?>" id="thumbnail" name="thumbnail">
+                                <?php if ($post['thumbnail']): ?>
+                                    <img src="<?= base_url($post['thumbnail']) ?>" alt="Thumbnail" class="img-thumbnail mt-2" style="width: 500px;">
+                                <?php endif; ?>
+                                <?php if (session('errors.thumbnail')): ?>
+                                    <div class="invalid-feedback">
+                                        <?= session('errors.thumbnail') ?>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="file" class="form-label">File - pdf, doc, ppt, exl (Opsional)</label>
+                                <input type="file" class="form-control <?= (session('errors.file')) ? 'is-invalid' : '' ?>" id="file" name="files">
+                                <?php if (session('errors.file')): ?>
+                                    <div class="invalid-feedback">
+                                        <?= session('errors.file') ?>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
                         </div>
 
 
 
 
                         <div class="row">
-                            <div class="mb-3 col-md-4">
+                            <div class="mb-3 col-md-3">
                                 <label for="kategori" class="form-label">Kategori</label>
                                 <select class="form-control <?= (session('errors.kategori')) ? 'is-invalid' : '' ?>" id="kategori" name="kategori">
                                     <option value="">-- Pilih Kategori --</option>
@@ -82,7 +93,7 @@
                                     </div>
                                 <?php endif; ?>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <label for="status" class="form-label">Status</label>
                                 <select class="form-control <?= (session('errors.status')) ? 'is-invalid' : '' ?>" id="status" name="status">
                                     <option value="draft" <?= (old('status', $post['status']) == 'draft') ? 'selected' : '' ?>>Draft</option>
@@ -97,7 +108,7 @@
                             </div>
 
 
-                            <div class="mb-3 col-md-4">
+                            <div class="mb-3 col-md-3">
                                 <label for="publish_date" class="form-label">Tanggal Publikasi</label>
                                 <input type="datetime-local" class="form-control <?= (session('errors.publish_date')) ? 'is-invalid' : '' ?>" id="publish_date" name="publish_date" value="<?= old('publish_date', $post['publish_date']) ?>">
                                 <?php if (session('errors.publish_date')): ?>
@@ -107,6 +118,15 @@
                                 <?php endif; ?>
                             </div>
 
+                            <div class="mb-3 col-md-3">
+                                <label for="website" class="form-label">Website (Optional)</label>
+                                <input type="text" class="form-control <?= (session('errors.website')) ? 'is-invalid' : '' ?>" id="website" name="website" value="<?= old('website', $post['website']) ?>">
+                                <?php if (session('errors.website')): ?>
+                                    <div class="invalid-feedback">
+                                        <?= session('errors.website') ?>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
                         </div>
 
 

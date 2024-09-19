@@ -33,7 +33,7 @@ class Dashboard extends BaseController
         $segment1 = $this->request->getUri()->getSegment(1);
         $segment2 = $this->request->getUri()->getSegment(2);
         $infoModel = new InformasiModel();
-        $data['news'] = $infoModel->getAllInfoWithKategori();
+        $data['news'] = $infoModel->getAllInfo();
         $data['convertDate'] = $convertDate->convertDate(null);
         $data['segment'] = [
             'seg1' => $segment1,
@@ -83,7 +83,8 @@ class Dashboard extends BaseController
                 'thumbnail' => 'permit_empty|is_image[thumbnail]|max_size[thumbnail,2048]|ext_in[thumbnail,png,jpg,jpeg]',
                 'status' => 'required|in_list[draft,published,archived]',
                 'files' => 'permit_empty|max_size[files,2048]|ext_in[files,pdf,doc,docx,xls,xlsx,ppt,pptx]',
-                'publish_date' => 'permit_empty|valid_date'
+                'publish_date' => 'permit_empty|valid_date',
+                'website' => 'max_length[100]',
 
             ]);
 
@@ -106,18 +107,15 @@ class Dashboard extends BaseController
             }
 
             // Handling file upload for thumbnail if exists
-            $files = $this->request->getFiles();
-            $savedFilesPath = "assets/lib/files/"; // Inisialisasi variabel untuk path file yang tersimpan
-            if ($files) {
-                foreach ($files['files'] as $file) {
-                    if ($file->isValid()) {
-                        $newFileName = $file->getRandomName();
-                        $file->move($savedFilesPath, $newFileName);
-                        // Dapatkan nama file setelah dipindahkan
-                        // dd($savedFilePath);
-                        $savedFilesPath = 'assets/lib/files/' . $newFileName;
-                    }
-                }
+            $files = $this->request->getFile('files');
+            $savedFilesPath = "assets/lib/files"; // Inisialisasi variabel untuk path file yang tersimpan
+            if ($files && $files->isValid()) {
+                $newFileName = $files->getRandomName();
+                // Pindahkan file ke direktori tujuan dengan nama asli
+                $files->move($savedFilesPath, $newFileName);
+
+                // Dapatkan nama file setelah dipindahkan
+                $savedFilesPath = 'assets/lib/files/' . $newFileName;
             }
             // Prepare the data for saving
 
@@ -130,6 +128,7 @@ class Dashboard extends BaseController
                 'user_id' => 1,
                 'status' => $this->request->getPost('status'),
                 'file_dokumen' => $savedFilesPath,
+                'website' => $this->request->getPost('website'),
                 'publish_date' => $this->request->getPost('publish_date')
             ];
 
@@ -184,7 +183,8 @@ class Dashboard extends BaseController
             'kategori' => 'required|integer',
             'thumbnail' => 'permit_empty|is_image[thumbnail]|max_size[thumbnail,2048]|ext_in[thumbnail,png,jpg,jpeg]',
             'status' => 'required|in_list[draft,published,archived]',
-            'publish_date' => 'permit_empty|valid_date'
+            'publish_date' => 'permit_empty|valid_date',
+            'website' => 'max_length[100]',
         ]);
 
         if (!$this->validate($validation->getRules())) {
@@ -225,6 +225,7 @@ class Dashboard extends BaseController
             'slug' => $createSlug->create_slug($this->request->getPost('judul')),
             'user_id' => 1, // Ganti dengan ID pengguna yang sesuai
             'status' => $this->request->getPost('status'),
+            'website' => $this->request->getPost('website'),
             'publish_date' => $this->request->getPost('publish_date')
         ];
 

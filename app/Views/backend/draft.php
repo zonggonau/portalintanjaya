@@ -24,6 +24,7 @@
                         <?= $news->konten; ?>
                     </p>
                 </section>
+
             </article>
             <!-- Comments section-->
 

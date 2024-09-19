@@ -13,6 +13,7 @@
                     <tr>
                         <th>News ID</th>
                         <th>Tanggal</th>
+                        <th>Status</th>
                         <th>Judul</th>
                         <!-- <th>Konten</th> -->
                         <th>Kategori</th>
@@ -27,7 +28,7 @@
                         <tr>
                             <td><?= $i ?></td>
                             <td><?= $item->publish_date ?></td>
-
+                            <td><?= $item->status ?></td>
                             <td> <a href="<?= base_url('/dashboard/berita/' . $item->slug) ?>"><?= $item->judul ?></a></td>
 
                             <td><?= $item->nama_kategori ?></td>
@@ -37,7 +38,7 @@
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <a href="<?= base_url('/dashboard/post/edit/' . $item->id) ?>" class="btn btn-sm btn-success">Edit</a>&nbsp;&nbsp;&nbsp;
-                                    <a href="#" class="btn btn-sm btn-warning"><?= $item->status ?></a>&nbsp;&nbsp;&nbsp;
+                                    <!-- <a href="#" class="btn btn-sm btn-warning"><?= $item->status ?></a>&nbsp;&nbsp;&nbsp; -->
                                     <a href="<?= base_url('/dashboard/delete/' . $item->id) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus berita ini?')">Hapus</a>
                                 </div>
                             </td>
